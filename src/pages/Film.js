@@ -1,6 +1,6 @@
 import React from "react";
 // JSON
-import Catalog from "./catalog.json";
+import Catalog from "../catalog.json";
 
 class Film extends React.Component {
   constructor() {
