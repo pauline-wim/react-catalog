@@ -1,11 +1,31 @@
 import React from "react";
+// JSON
+import Catalog from "./catalog.json";
 
 class Film extends React.Component {
+  constructor() {
+    super();
+
+    // this.getFilm = this.getFilm.bind(this);
+  }
+
   render() {
     return (
-      <div>
+      <article>
         <h1>Film</h1>
-      </div>
+        <p>id: {this.props.match.params.id}</p>
+        <p>
+          <span>Title:</span>{" "}
+          {Catalog.map((film) => {
+            return (
+              <div>
+                <p>id: {this.props.match.params.id}</p>
+                <p>title: {film.title}</p>
+              </div>
+            );
+          })}
+        </p>
+      </article>
     );
   }
 }
