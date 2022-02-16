@@ -10,28 +10,33 @@ class Film extends React.Component {
 
   render() {
     const pageID = this.props.match.params.id;
+
+    const film = Catalog.find((film) => {
+      return film.id.toString() === this.props.match.params.id.toString();
+    });
+
     return (
       <article>
         <h1>Film</h1>
         <p>id: {pageID}</p>
-        <div key={Catalog[pageID - 1].id}>
+        <div key={film.id}>
           <p>
-            <span>Title:</span> {Catalog[pageID - 1].title}
+            <span>Title:</span> {film.title}
           </p>
           <p>
-            <span>Director:</span> {Catalog[pageID - 1].director}
+            <span>Director:</span> {film.director}
           </p>
           <p>
             <span>Actors:</span>{" "}
           </p>
           <ul>
-            {Catalog[pageID - 1].stars.map((el, i) => {
+            {film.stars.map((el, i) => {
               return <li key={i}>{el}</li>;
             })}
           </ul>
-          <img src={Catalog[pageID - 1].image} alt="film poster" />
+          <img src={film.image} alt="film poster" />
           <p>
-            <span>Description:</span> {Catalog[pageID - 1].description}
+            <span>Description:</span> {film.description}
           </p>
         </div>
         <button>
